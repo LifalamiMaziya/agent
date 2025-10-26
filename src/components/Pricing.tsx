@@ -1,3 +1,7 @@
+'use client';
+
+import { motion } from 'framer-motion';
+
 export default function Pricing() {
   const plans = [
     {
@@ -41,19 +45,30 @@ export default function Pricing() {
   return (
     <section id="pricing" className="py-32 px-6 border-t border-border">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-20 text-center">
+        <motion.div
+          className="mb-20 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="text-4xl md:text-5xl font-light tracking-tight mb-6 text-foreground">
             Flexible pricing for teams of all sizes
           </h2>
           <p className="text-base text-muted font-light max-w-xl mx-auto leading-relaxed">
-            Choose the plan that’s right for your next project. All plans include a free trial period.
+            Choose the plan that&apos;s right for your next project. All plans include a free trial period.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border rounded-sm overflow-hidden">
           {plans.map((plan, index) => (
-            <div
+            <motion.div
               key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -4 }}
               className={`bg-background p-10 group hover:bg-subtle transition-all duration-200 ${
                 plan.highlighted ? 'bg-subtle' : ''
               }`}
@@ -95,7 +110,7 @@ export default function Pricing() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
         </div>
 

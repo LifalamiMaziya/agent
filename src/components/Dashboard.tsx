@@ -1,5 +1,7 @@
 'use client';
 
+import { motion } from 'framer-motion';
+
 export default function Dashboard() {
   const projects = [
     { name: 'Marketing Site', updated: '2m ago' },
@@ -11,16 +13,28 @@ export default function Dashboard() {
   return (
     <section id="dashboard" className="py-32 px-6 border-t border-border">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-16">
+        <motion.div
+          className="mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="text-4xl md:text-5xl font-light tracking-tight mb-6 text-foreground">
             Dashboard
           </h2>
           <p className="text-base text-muted font-light max-w-xl leading-relaxed">
             Manage all your AI-generated projects in one place
           </p>
-        </div>
+        </motion.div>
 
-        <div className="border border-border rounded-sm overflow-hidden bg-surface">
+        <motion.div
+          className="border border-border rounded-sm overflow-hidden bg-surface"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
           {/* Dashboard Header */}
           <div className="border-b border-border px-6 py-4 bg-subtle flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -41,9 +55,14 @@ export default function Dashboard() {
           {/* Dashboard Rows */}
           <div>
             {projects.map((project, index) => (
-              <div
+              <motion.div
                 key={index}
                 className="grid grid-cols-9 gap-4 px-6 py-4 border-b border-border hover:bg-subtle transition-all duration-200 group cursor-pointer"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                whileHover={{ x: 4 }}
               >
                 <div className="col-span-6 text-sm font-light text-foreground group-hover:text-accent transition-colors duration-200">
                   {project.name}
@@ -51,7 +70,7 @@ export default function Dashboard() {
                 <div className="col-span-3 text-sm font-light text-muted/60">
                   {project.updated}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
@@ -64,7 +83,7 @@ export default function Dashboard() {
               View All Projects →
             </button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

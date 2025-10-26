@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 const examplePrompts = [
   "Build a modern landing page",
@@ -45,24 +46,37 @@ export default function Hero() {
     <section className="relative min-h-screen flex items-center justify-center px-4 py-32">
       <div className="max-w-4xl mx-auto w-full">
 
-        <div className="text-center mb-16">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <h1 className="text-6xl md:text-8xl font-light tracking-tight mb-6 text-foreground">
             Build with AI
           </h1>
           <p className="text-lg text-muted max-w-xl mx-auto font-light leading-relaxed">
             Production-ready code from natural language
           </p>
-        </div>
+        </motion.div>
 
-        <form onSubmit={handleSubmit} className="max-w-4xl mx-auto">
+        <motion.form
+          onSubmit={handleSubmit}
+          className="max-w-4xl mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+        >
           <div className="relative">
-            <div
+            <motion.div
               className={`relative rounded-2xl overflow-hidden transition-all duration-300 ${
                 isFocused
                   ? 'shadow-[0_0_0_2px_rgba(207,19,16,0.6),0_0_32px_rgba(207,19,16,0.25)]'
                   : 'shadow-lg'
               }`}
               style={{ backgroundColor: 'var(--input-bg)' }}
+              whileHover={{ scale: 1.01 }}
+              transition={{ duration: 0.2 }}
             >
               <div className="flex items-center gap-3 px-6 py-5">
                 {/* Textarea */}
@@ -97,22 +111,32 @@ export default function Hero() {
                   )}
                 </button>
               </div>
-            </div>
+            </motion.div>
           </div>
-        </form>
+        </motion.form>
 
-        <div className="flex justify-center gap-4 mt-10 text-xs text-muted font-light">
+        <motion.div
+          className="flex justify-center gap-4 mt-10 text-xs text-muted font-light"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
           <span className="text-muted/60">Try:</span>
-          {['Dashboard', 'Landing', 'Pricing'].map((example) => (
-            <button
+          {['Dashboard', 'Landing', 'Pricing'].map((example, index) => (
+            <motion.button
               key={example}
               onClick={() => setPrompt(`Create a ${example.toLowerCase()} interface`)}
               className="hover:text-foreground transition-colors duration-200 px-2"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               {example}
-            </button>
+            </motion.button>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
