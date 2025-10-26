@@ -2,9 +2,9 @@ import Image from 'next/image';
 
 export default function Footer() {
   const footerLinks = {
-    Product: ['Features', 'Pricing', 'Documentation'],
-    Company: ['About', 'Contact'],
-    Legal: ['Privacy', 'Terms'],
+    Product: [{name:'Dashboard', href: '#dashboard'}, {name:'Pricing', href: '#pricing'}, {name:'Documentation', href:'#docs'}],
+    Company: [{name:'About', href: '#'}, {name:'Contact', href: '#'}],
+    Legal: [{name:'Privacy', href: '#'}, {name:'Terms', href: '#'}],
   };
 
   return (
@@ -31,12 +31,12 @@ export default function Footer() {
               </h3>
               <ul className="space-y-3">
                 {links.map((link) => (
-                  <li key={link}>
+                  <li key={link.name}>
                     <a
-                      href="#"
+                      href={link.href}
                       className="text-sm text-muted hover:text-foreground transition-colors duration-200 font-light"
                     >
-                      {link}
+                      {link.name}
                     </a>
                   </li>
                 ))}
