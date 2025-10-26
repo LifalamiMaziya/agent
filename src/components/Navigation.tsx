@@ -38,10 +38,10 @@ export default function Navigation() {
 
           <div className="hidden md:flex items-center gap-8">
             <a
-              href="#features"
+              href="#dashboard"
               className="text-sm text-muted hover:text-foreground transition-colors duration-200 font-light tracking-wide"
             >
-              Features
+              Dashboard
             </a>
             <a
               href="#pricing"

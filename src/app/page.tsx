@@ -1,6 +1,6 @@
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
-import Features from '@/components/Features';
+import Dashboard from '@/components/Dashboard';
 import Pricing from '@/components/Pricing';
 import Footer from '@/components/Footer';
 
@@ -10,7 +10,7 @@ export default function Home() {
       <Navigation />
       <main>
         <Hero />
-        <Features />
+        <Dashboard />
         <Pricing />
       </main>
       <Footer />

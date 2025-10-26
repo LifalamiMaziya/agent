@@ -1,15 +1,15 @@
 'use client';
 
-export default function Features() {
+export default function Dashboard() {
   const projects = [
-    { name: 'Marketing Site', status: 'Active', updated: '2m ago' },
-    { name: 'Dashboard UI', status: 'Building', updated: '5m ago' },
-    { name: 'Landing Page', status: 'Complete', updated: '1h ago' },
-    { name: 'Admin Panel', status: 'Active', updated: '3h ago' },
+    { name: 'Marketing Site', updated: '2m ago' },
+    { name: 'Dashboard UI', updated: '5m ago' },
+    { name: 'Landing Page', updated: '1h ago' },
+    { name: 'Admin Panel', updated: '3h ago' },
   ];
 
   return (
-    <section id="features" className="py-32 px-6 border-t border-border">
+    <section id="dashboard" className="py-32 px-6 border-t border-border">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16">
           <h2 className="text-4xl md:text-5xl font-light tracking-tight mb-6 text-foreground">
@@ -33,9 +33,8 @@ export default function Features() {
           </div>
 
           {/* Dashboard Table Header */}
-          <div className="grid grid-cols-12 gap-4 px-6 py-3 bg-subtle border-b border-border text-xs font-medium text-muted/80 tracking-wider uppercase">
+          <div className="grid grid-cols-9 gap-4 px-6 py-3 bg-subtle border-b border-border text-xs font-medium text-muted/80 tracking-wider uppercase">
             <div className="col-span-6">Name</div>
-            <div className="col-span-3">Status</div>
             <div className="col-span-3">Updated</div>
           </div>
 
@@ -44,22 +43,10 @@ export default function Features() {
             {projects.map((project, index) => (
               <div
                 key={index}
-                className="grid grid-cols-12 gap-4 px-6 py-4 border-b border-border hover:bg-subtle transition-all duration-200 group cursor-pointer"
+                className="grid grid-cols-9 gap-4 px-6 py-4 border-b border-border hover:bg-subtle transition-all duration-200 group cursor-pointer"
               >
                 <div className="col-span-6 text-sm font-light text-foreground group-hover:text-accent transition-colors duration-200">
                   {project.name}
-                </div>
-                <div className="col-span-3 flex items-center gap-2">
-                  <span
-                    className={`w-1.5 h-1.5 rounded-full ${
-                      project.status === 'Active'
-                        ? 'bg-accent'
-                        : project.status === 'Building'
-                        ? 'bg-yellow-500'
-                        : 'bg-green-500'
-                    }`}
-                  />
-                  <span className="text-sm font-light text-muted">{project.status}</span>
                 </div>
                 <div className="col-span-3 text-sm font-light text-muted/60">
                   {project.updated}
