@@ -1,27 +1,26 @@
 export default function Pricing() {
   const plans = [
     {
-      name: 'Starter',
+      name: 'Hobby',
       price: '0',
       period: 'Free',
       features: [
-        '10 generations / month',
+        '20 generations / month',
         'Core components',
         'Community access',
         'Code export',
       ],
     },
     {
-      name: 'Professional',
-      price: '49',
+      name: 'Pro',
+      price: '449',
       period: '/month',
       features: [
         'Unlimited generations',
-        'Advanced components',
+        'Advanced & private components',
         'Priority support',
-        'Version control',
+        'Version history',
         'Team collaboration',
-        'Custom systems',
       ],
       highlighted: true,
     },
@@ -30,12 +29,11 @@ export default function Pricing() {
       price: 'Custom',
       period: '',
       features: [
-        'Everything in Professional',
-        'Dedicated support',
-        'SLA guarantees',
-        'Custom integrations',
+        'Everything in Pro',
+        'Dedicated support & SLA',
         'On-premise deployment',
-        'Custom AI training',
+        'Custom integrations',
+        'Security & compliance reviews',
       ],
     },
   ];
@@ -43,12 +41,12 @@ export default function Pricing() {
   return (
     <section id="pricing" className="py-32 px-6 border-t border-border">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-20">
+        <div className="mb-20 text-center">
           <h2 className="text-4xl md:text-5xl font-light tracking-tight mb-6 text-foreground">
-            Pricing
+            Flexible pricing for teams of all sizes
           </h2>
-          <p className="text-base text-muted font-light max-w-xl leading-relaxed">
-            Transparent pricing for teams of all sizes
+          <p className="text-base text-muted font-light max-w-xl mx-auto leading-relaxed">
+            Choose the plan that’s right for your next project. All plans include a free trial period.
           </p>
         </div>
 
@@ -66,7 +64,7 @@ export default function Pricing() {
                 </h3>
                 <div className="flex items-baseline gap-1">
                   <span className="text-5xl font-light tracking-tight text-foreground">
-                    {plan.price !== 'Custom' ? `$${plan.price}` : plan.price}
+                    {plan.price !== 'Custom' ? `R${plan.price}` : plan.price}
                   </span>
                   {plan.period && (
                     <span className="text-sm text-muted font-light">
@@ -83,7 +81,7 @@ export default function Pricing() {
                     : 'border border-border hover:border-foreground/20 hover:bg-surface'
                 }`}
               >
-                {plan.price === 'Custom' ? 'Contact Sales' : 'Start Trial'}
+                {plan.name === 'Hobby' ? 'Start for Free' : (plan.name === 'Pro' ? 'Start 14-day Trial' : 'Contact Sales')}
               </button>
 
               <ul className="space-y-3">
@@ -92,7 +90,7 @@ export default function Pricing() {
                     key={featureIndex}
                     className="flex items-start gap-3 text-sm text-muted font-light leading-relaxed"
                   >
-                    <span className="text-accent mt-0.5">—</span>
+                    <span className="text-accent mt-0.5">✓</span>
                     {feature}
                   </li>
                 ))}
@@ -103,7 +101,7 @@ export default function Pricing() {
 
         <div className="mt-12 text-center">
           <p className="text-xs text-muted/80 font-light">
-            All plans include a 14-day trial period. No credit card required.
+            Need more? Check out our documentation or contact us for a custom plan.
           </p>
         </div>
       </div>
