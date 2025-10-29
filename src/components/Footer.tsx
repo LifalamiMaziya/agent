@@ -2,9 +2,19 @@ import Image from 'next/image';
 
 export default function Footer() {
   const footerLinks = {
-    Product: [{name:'Dashboard', href: '#dashboard'}, {name:'Pricing', href: '#pricing'}, {name:'Documentation', href:'#docs'}],
-    Company: [{name:'About', href: '#'}, {name:'Contact', href: '#'}],
-    Legal: [{name:'Privacy', href: '#'}, {name:'Terms', href: '#'}],
+    Product: [
+      {name:'Pricing', href: '#pricing'},
+      {name:'Documentation', href:'/docs'},
+      {name:'Dashboard', href: '/dashboard'}
+    ],
+    Company: [
+      {name:'About', href: '/about'},
+      {name:'Contact', href: '/contact'}
+    ],
+    Legal: [
+      {name:'Privacy', href: '/privacy'},
+      {name:'Terms', href: '/terms'}
+    ],
   };
 
   return (
@@ -50,10 +60,10 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Vektra. All rights reserved.
           </p>
           <div className="flex gap-6 text-xs text-muted/70 font-light">
-            <a href="#" className="hover:text-foreground transition-colors duration-200">
+            <a href="/privacy" className="hover:text-foreground transition-colors duration-200">
               Privacy
             </a>
-            <a href="#" className="hover:text-foreground transition-colors duration-200">
+            <a href="/terms" className="hover:text-foreground transition-colors duration-200">
               Terms
             </a>
           </div>

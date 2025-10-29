@@ -1,8 +1,27 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/contexts/AuthContext';
 
 export default function Pricing() {
+  const router = useRouter();
+  const { user } = useAuth();
+
+  const handlePlanClick = (planName: string) => {
+    if (planName === 'Enterprise') {
+      router.push('/contact');
+      return;
+    }
+
+    if (user) {
+      // If logged in, go to settings subscription tab
+      router.push('/settings');
+    } else {
+      // If not logged in, go to sign up
+      router.push('/auth/signup');
+    }
+  };
   const plans = [
     {
       name: 'Hobby',
@@ -90,6 +109,7 @@ export default function Pricing() {
               </div>
 
               <button
+                onClick={() => handlePlanClick(plan.name)}
                 className={`w-full py-2.5 mb-8 text-sm font-medium tracking-wide transition-all duration-200 rounded-sm ${
                   plan.highlighted
                     ? 'bg-accent text-white hover:bg-accent-hover'
